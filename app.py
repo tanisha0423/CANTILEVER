@@ -7,8 +7,12 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
+    # Base directory of the app
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+    excel_path = os.path.join(BASE_DIR, "snapdeal_products.xlsx")
+
     # Load product data from Excel file
-    df = pd.read_excel("snapdeal_products.xlsx")
+    df = pd.read_excel(excel_path)
 
     # Group products by category
     grouped_products = defaultdict(list)
@@ -22,4 +26,5 @@ def index():
     return render_template("index.html", grouped_products=grouped_products)
 
 if __name__ == "__main__":
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    port = int(os.environ.get("PORT", 5000))  # Use Render's port
+    app.run(debug=False, host="0.0.0.0", port=port)
