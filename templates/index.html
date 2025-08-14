@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Snapdeal</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+  <div class="page-container">
+    <div class="header-container">
+      <h1>Snapdeal</h1>
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="Search for bracelets...">
+        <button onclick="clearSearch()">Clear</button>
+      </div>
+    </div>
+
+    <div class="products-container" id="productGrid">
+      {% for category, items in grouped_products.items() %}
+        <h2 class="category-header">{{ category | capitalize }}</h2>
+        <div class="category-group">
+          {% for product in items %}
+            <div class="product-card">
+              <img src="{{ product['Image URL'] }}" alt="{{ product['Product Name'] }}">
+              <h3>{{ product['Product Name'] }}</h3>
+              <p>{{ product['Price'] }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', () => {
+      const filter = searchInput.value.toLowerCase();
+      const cards = document.querySelectorAll('.product-card');
+      cards.forEach(card => {
+        const name = card.querySelector('h3').innerText.toLowerCase();
+        card.style.display = name.includes(filter) ? 'block' : 'none';
+      });
+    });
+
+    function clearSearch() {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+    }
+  </script>
+</body>
+</html>
