@@ -5,6 +5,9 @@ It is a **Flask-based web application** that scrapes product data (title, rating
 
 ## Live Demo
 [View the Project](https://snapdealscraper.onrender.com/)
+> ⏳ **Heads Up:** Since this project is hosted on Render's free plan, the server “sleeps” when inactive.  
+> The first load after inactivity may take **a short while**. Thanks for your patience!
+
 
 ## Tech Stack
 - **Backend:** Flask  
