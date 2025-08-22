@@ -13,7 +13,10 @@ It is a **Flask-based web application** that scrapes product data (title, rating
 - **Backend:** Flask  
 - **Templating:** Jinja2  
 - **Data Handling:** Pandas  
-- **Frontend:** HTML, CSS  
+- **Frontend:** HTML, CSS
+- **Scraping**: Selenium, ChromeDriver
+
+Project Objectives
 
 ## Project Objectives
 - Scrape e-commerce product details (title, rating, price, etc.) from **Snapdeal**  
